@@ -1,0 +1,751 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>TEXAS: Beef • Fish • Fowl — Order Online</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bodoni+Moda:ital,opsz,wght@0,6..96,400..800;1,6..96,400..600&family=Archivo:wght@400;500;600&family=Oswald:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+:root{
+  --char:#16100D;
+  --char-2:#221812;
+  --oxblood:#59171A;
+  --oxblood-lo:#3A0F12;
+  --bone:#E9E1CE;
+  --bone-2:#F4EEE1;
+  --brass:#C79A45;
+  --brass-lo:#9A7429;
+  --ink:#2A211C;
+  --muted:#7C6E62;
+  --line:rgba(199,154,69,.28);
+
+  --display:"Bodoni Moda", "Didot", Georgia, serif;
+  --body:"Archivo", "Helvetica Neue", Arial, sans-serif;
+  --ticket:"Oswald", "Arial Narrow", sans-serif;
+}
+
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{
+  margin:0;
+  background:var(--char);
+  color:var(--bone);
+  font-family:var(--body);
+  font-size:16px;
+  line-height:1.6;
+  -webkit-font-smoothing:antialiased;
+}
+img{max-width:100%;display:block}
+a{color:inherit}
+button{font-family:inherit;cursor:pointer}
+:focus-visible{outline:2px solid var(--brass);outline-offset:3px}
+
+.wrap{max-width:1180px;margin:0 auto;padding:0 24px}
+.band{padding:clamp(70px,9vw,124px) 0}
+
+.eyebrow{
+  font-family:var(--ticket);
+  font-weight:400;
+  font-size:12px;
+  letter-spacing:.34em;
+  text-transform:uppercase;
+  color:var(--brass);
+}
+h1,h2,h3{font-family:var(--display);font-weight:500;margin:0;line-height:1.04}
+h2{font-size:clamp(34px,4.6vw,58px);letter-spacing:-.01em}
+h3{font-size:22px}
+.lede{max-width:56ch;color:rgba(233,225,206,.72);font-size:17px}
+
+/* ---------- utility bar ---------- */
+.util{
+  position:sticky;top:0;z-index:60;
+  background:rgba(22,16,13,.94);
+  backdrop-filter:blur(9px);
+  border-bottom:1px solid rgba(199,154,69,.22);
+}
+.util-in{display:flex;align-items:center;gap:20px;height:58px}
+.mark{font-family:var(--display);font-size:19px;letter-spacing:.16em;text-decoration:none;white-space:nowrap}
+.mark span{color:var(--brass)}
+.util-note{
+  font-family:var(--ticket);font-size:11.5px;letter-spacing:.2em;text-transform:uppercase;
+  color:rgba(233,225,206,.55);margin-left:auto
+}
+.cart-btn{
+  display:inline-flex;align-items:center;gap:9px;
+  background:none;border:1px solid var(--line);color:var(--bone);
+  padding:9px 15px;border-radius:2px;
+  font-family:var(--ticket);font-size:12px;letter-spacing:.18em;text-transform:uppercase;
+  transition:border-color .2s,background .2s;
+}
+.cart-btn:hover{border-color:var(--brass);background:rgba(199,154,69,.09)}
+.pill{
+  min-width:21px;height:21px;padding:0 5px;border-radius:11px;
+  background:var(--brass);color:var(--char);
+  font-size:11.5px;font-weight:600;display:grid;place-items:center;
+}
+
+/* ---------- hero ---------- */
+.hero{
+  position:relative;overflow:hidden;
+  background:
+    radial-gradient(120% 90% at 50% -18%, rgba(199,154,69,.20), transparent 62%),
+    radial-gradient(80% 60% at 85% 110%, rgba(89,23,26,.75), transparent 70%),
+    linear-gradient(180deg,#1B120E 0%,#150F0C 100%);
+  padding:clamp(64px,9vw,116px) 0 clamp(48px,6vw,74px);
+  text-align:center;
+}
+.hero::after{
+  content:"";position:absolute;inset:0;pointer-events:none;
+  background-image:repeating-linear-gradient(0deg,rgba(255,255,255,.014) 0 1px,transparent 1px 3px);
+}
+.hero-in{position:relative;z-index:2}
+.hero h1{
+  font-size:clamp(44px,8.2vw,104px);
+  font-weight:500;
+  margin:20px auto 0;
+  max-width:14ch;
+}
+.hero h1 em{font-style:italic;color:var(--brass)}
+.rule{
+  width:88px;height:1px;background:var(--brass);opacity:.7;
+  margin:26px auto;
+}
+.hero .lede{margin:0 auto;text-align:center}
+.hero-cta{display:flex;gap:14px;justify-content:center;flex-wrap:wrap;margin-top:34px}
+
+.btn{
+  border:1px solid var(--brass);
+  background:var(--brass);color:#1A120C;
+  padding:14px 26px;border-radius:2px;
+  font-family:var(--ticket);font-weight:500;font-size:13px;letter-spacing:.2em;text-transform:uppercase;
+  transition:transform .15s, background .2s, color .2s;
+  text-decoration:none;display:inline-block;
+}
+.btn:hover{background:#D8AA53;transform:translateY(-1px)}
+.btn.ghost{background:none;color:var(--bone);border-color:var(--line)}
+.btn.ghost:hover{background:rgba(199,154,69,.1);border-color:var(--brass)}
+
+.laurels{
+  display:flex;gap:30px;justify-content:center;flex-wrap:wrap;
+  margin-top:46px;padding-top:26px;border-top:1px solid rgba(199,154,69,.16);
+  font-family:var(--ticket);font-size:11.5px;letter-spacing:.2em;text-transform:uppercase;
+  color:rgba(233,225,206,.5);
+}
+.laurels b{color:var(--brass);font-weight:400}
+
+/* ---------- reservation strip ---------- */
+.resv{
+  margin:44px auto 0;max-width:900px;
+  background:rgba(244,238,225,.05);
+  border:1px solid var(--line);
+  border-radius:3px;
+  padding:18px;
+  display:grid;grid-template-columns:repeat(4,1fr);gap:14px;align-items:end;
+  text-align:left;
+}
+.field{display:flex;flex-direction:column;gap:7px}
+.field label{
+  font-family:var(--ticket);font-size:10.5px;letter-spacing:.2em;text-transform:uppercase;
+  color:rgba(233,225,206,.55);
+}
+.field input,.field select{
+  background:rgba(22,16,13,.6);
+  border:1px solid rgba(199,154,69,.24);
+  color:var(--bone);
+  padding:11px 12px;border-radius:2px;
+  font-family:var(--body);font-size:14px;
+}
+.field select{appearance:none}
+.resv .btn{width:100%;text-align:center;padding:13px 10px}
+.resv-note{
+  grid-column:1/-1;margin:2px 0 0;
+  font-size:12.5px;color:rgba(233,225,206,.5);
+}
+.resv-note b{color:var(--brass);font-weight:500}
+
+/* ---------- ordering ---------- */
+.order{background:var(--bone);color:var(--ink)}
+.order h2{color:var(--oxblood)}
+.order .eyebrow{color:var(--oxblood-lo);opacity:.8}
+.order .lede{color:var(--muted)}
+.sec-head{display:flex;justify-content:space-between;align-items:flex-end;gap:30px;flex-wrap:wrap;margin-bottom:34px}
+
+.tabs{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:30px}
+.tab{
+  background:none;border:1px solid rgba(42,33,28,.22);color:var(--ink);
+  padding:9px 17px;border-radius:2px;
+  font-family:var(--ticket);font-size:12px;letter-spacing:.16em;text-transform:uppercase;
+  transition:all .18s;
+}
+.tab:hover{border-color:var(--oxblood)}
+.tab[aria-selected="true"]{background:var(--oxblood);border-color:var(--oxblood);color:var(--bone-2)}
+
+.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(268px,1fr));gap:18px}
+
+/* signature: butcher ticket card */
+.ticket{
+  background:var(--bone-2);
+  border:1px solid rgba(42,33,28,.16);
+  border-left:3px solid var(--oxblood);
+  border-radius:2px;
+  padding:20px 20px 18px;
+  display:flex;flex-direction:column;gap:12px;
+  position:relative;
+  transition:box-shadow .2s, transform .2s;
+}
+.ticket:hover{box-shadow:0 12px 30px -18px rgba(42,33,28,.55);transform:translateY(-2px)}
+.ticket-top{display:flex;justify-content:space-between;align-items:baseline;gap:12px}
+.cut{font-family:var(--display);font-size:21px;line-height:1.15;color:var(--ink)}
+.price{font-family:var(--ticket);font-weight:500;font-size:19px;color:var(--oxblood);white-space:nowrap}
+.spec{
+  font-family:var(--ticket);font-weight:300;font-size:11px;letter-spacing:.19em;text-transform:uppercase;
+  color:var(--muted);
+}
+.desc{font-size:13.5px;line-height:1.55;color:#5F5349;margin:0;flex:1}
+.add{
+  margin-top:2px;width:100%;
+  background:none;border:1px solid var(--oxblood);color:var(--oxblood);
+  padding:11px;border-radius:2px;
+  font-family:var(--ticket);font-size:12px;letter-spacing:.2em;text-transform:uppercase;
+  transition:background .18s,color .18s;
+}
+.add:hover{background:var(--oxblood);color:var(--bone-2)}
+.add.done{background:var(--oxblood);color:var(--bone-2);border-color:var(--oxblood)}
+
+/* ---------- gift cards ---------- */
+.gift{
+  background:
+    radial-gradient(100% 80% at 20% 0%, rgba(89,23,26,.55), transparent 70%),
+    var(--char-2);
+}
+.gift-grid{display:grid;grid-template-columns:1.05fr .95fr;gap:clamp(32px,5vw,72px);align-items:center}
+.gc-card{
+  border:1px solid var(--line);border-radius:4px;
+  background:linear-gradient(145deg,#2B1B16,#1A110D);
+  padding:26px;
+}
+.gc-face{
+  border:1px solid rgba(199,154,69,.35);border-radius:3px;
+  padding:26px 22px;text-align:center;
+  background:linear-gradient(160deg, rgba(199,154,69,.16), rgba(89,23,26,.28));
+}
+.gc-face .mk{font-family:var(--display);font-size:26px;letter-spacing:.14em}
+.gc-face .mk span{color:var(--brass)}
+.gc-amt{font-family:var(--display);font-size:52px;color:var(--brass);margin:12px 0 4px;line-height:1}
+.gc-face small{font-family:var(--ticket);font-size:10.5px;letter-spacing:.22em;text-transform:uppercase;color:rgba(233,225,206,.55)}
+.amounts{display:flex;gap:9px;flex-wrap:wrap;margin:20px 0 16px}
+.amt{
+  flex:1;min-width:66px;
+  background:none;border:1px solid var(--line);color:var(--bone);
+  padding:12px 6px;border-radius:2px;
+  font-family:var(--ticket);font-size:16px;
+  transition:all .18s;
+}
+.amt:hover{border-color:var(--brass)}
+.amt[aria-pressed="true"]{background:var(--brass);color:var(--char);border-color:var(--brass)}
+.gc-form{display:flex;flex-direction:column;gap:12px}
+.gc-form input{
+  background:rgba(22,16,13,.6);border:1px solid rgba(199,154,69,.24);color:var(--bone);
+  padding:12px;border-radius:2px;font-size:14px;font-family:var(--body);
+}
+.gc-form .btn{width:100%}
+.checks{list-style:none;margin:26px 0 0;padding:0;display:flex;flex-direction:column;gap:13px}
+.checks li{display:flex;gap:12px;align-items:flex-start;font-size:15px;color:rgba(233,225,206,.78)}
+.checks svg{flex:none;margin-top:4px}
+
+/* ---------- private dining ---------- */
+.pd{background:var(--bone-2);color:var(--ink)}
+.pd h2{color:var(--oxblood)}
+.pd .eyebrow{color:var(--oxblood-lo)}
+.pd .lede{color:var(--muted)}
+.rooms{display:grid;grid-template-columns:repeat(auto-fit,minmax(250px,1fr));gap:18px;margin-top:34px}
+.room{
+  border:1px solid rgba(42,33,28,.16);border-top:3px solid var(--brass);
+  background:var(--bone);padding:24px;border-radius:2px;
+}
+.room .seats{font-family:var(--ticket);font-size:11px;letter-spacing:.2em;text-transform:uppercase;color:var(--muted)}
+.room h3{color:var(--oxblood);margin:8px 0 10px}
+.room p{font-size:13.5px;color:#5F5349;margin:0 0 18px}
+.room .add{border-color:var(--brass-lo);color:var(--brass-lo)}
+.room .add:hover,.room .add.done{background:var(--brass-lo);color:var(--bone-2)}
+
+/* ---------- admin pitch ---------- */
+.admin{background:var(--char);border-top:1px solid rgba(199,154,69,.16)}
+.admin-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(230px,1fr));gap:1px;background:rgba(199,154,69,.16);border:1px solid rgba(199,154,69,.16);margin-top:38px}
+.cellbox{background:var(--char);padding:28px 24px}
+.cellbox .n{font-family:var(--ticket);font-size:11px;letter-spacing:.24em;color:var(--brass);text-transform:uppercase}
+.cellbox h3{font-size:19px;margin:12px 0 9px}
+.cellbox p{font-size:14px;color:rgba(233,225,206,.62);margin:0}
+
+/* ---------- footer ---------- */
+footer{background:var(--oxblood-lo);padding:64px 0 34px}
+.f-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(210px,1fr));gap:34px}
+.f-grid h4{font-family:var(--ticket);font-size:11px;letter-spacing:.24em;text-transform:uppercase;color:var(--brass);margin:0 0 14px;font-weight:400}
+.f-grid p,.f-grid a{font-size:14.5px;color:rgba(233,225,206,.76);margin:0 0 6px;text-decoration:none;display:block}
+.f-grid a:hover{color:var(--brass)}
+.f-bot{
+  margin-top:46px;padding-top:20px;border-top:1px solid rgba(199,154,69,.2);
+  display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap;
+  font-size:12.5px;color:rgba(233,225,206,.5);
+}
+
+/* ---------- cart drawer as guest check ---------- */
+.scrim{
+  position:fixed;inset:0;background:rgba(10,7,5,.66);
+  opacity:0;pointer-events:none;transition:opacity .3s;z-index:80;
+}
+.scrim.open{opacity:1;pointer-events:auto}
+.drawer{
+  position:fixed;top:0;right:0;height:100%;width:min(408px,100%);
+  background:var(--char-2);z-index:90;
+  transform:translateX(100%);transition:transform .32s cubic-bezier(.4,0,.2,1);
+  display:flex;flex-direction:column;
+  border-left:1px solid var(--line);
+}
+.drawer.open{transform:translateX(0)}
+.d-head{
+  display:flex;justify-content:space-between;align-items:center;
+  padding:18px 22px;border-bottom:1px solid rgba(199,154,69,.2);
+}
+.d-head h3{font-size:17px;letter-spacing:.1em}
+.close{background:none;border:none;color:var(--bone);font-size:24px;line-height:1;padding:4px 8px}
+.d-body{flex:1;overflow-y:auto;padding:22px}
+
+.check{
+  background:var(--bone-2);color:var(--ink);
+  padding:24px 22px 30px;
+  border-radius:2px 2px 0 0;
+  position:relative;
+  box-shadow:0 18px 40px -22px rgba(0,0,0,.9);
+}
+.check::after{
+  content:"";position:absolute;left:0;right:0;bottom:-11px;height:12px;
+  background:var(--bone-2);
+  -webkit-mask-image:repeating-linear-gradient(-45deg,#000 0 7px,transparent 7px 14px);
+  mask-image:repeating-linear-gradient(-45deg,#000 0 7px,transparent 7px 14px);
+}
+.check-head{text-align:center;border-bottom:1px dashed rgba(42,33,28,.35);padding-bottom:14px;margin-bottom:16px}
+.check-head .mk{font-family:var(--display);font-size:19px;letter-spacing:.16em;color:var(--oxblood)}
+.check-head .meta{font-family:var(--ticket);font-size:10.5px;letter-spacing:.2em;text-transform:uppercase;color:var(--muted);margin-top:6px}
+.line{display:flex;align-items:baseline;gap:6px;margin-bottom:13px;font-family:var(--ticket);font-weight:300;font-size:14.5px}
+.line .nm{color:var(--ink)}
+.line .dots{flex:1;border-bottom:1px dotted rgba(42,33,28,.4);transform:translateY(-4px)}
+.line .amt-v{color:var(--oxblood);font-weight:500}
+.line .rm{background:none;border:none;color:var(--muted);font-size:15px;padding:0 2px;line-height:1}
+.line .rm:hover{color:var(--oxblood)}
+.totals{border-top:1px dashed rgba(42,33,28,.35);margin-top:18px;padding-top:14px}
+.totals .line{font-size:14px;margin-bottom:8px}
+.totals .grand{font-family:var(--display);font-size:20px;margin-top:12px;margin-bottom:0}
+.totals .grand .amt-v{font-size:22px}
+.empty{text-align:center;color:var(--muted);font-size:14px;padding:30px 10px}
+.empty strong{display:block;font-family:var(--display);font-size:19px;color:var(--ink);margin-bottom:8px}
+.d-foot{padding:20px 22px;border-top:1px solid rgba(199,154,69,.2)}
+.d-foot .btn{width:100%;text-align:center}
+.d-foot small{display:block;text-align:center;margin-top:12px;font-size:12px;color:rgba(233,225,206,.45)}
+
+/* ---------- toast ---------- */
+.toast{
+  position:fixed;left:50%;bottom:28px;transform:translate(-50%,20px);
+  background:var(--bone-2);color:var(--ink);
+  padding:13px 22px;border-radius:2px;border-left:3px solid var(--oxblood);
+  font-size:14px;z-index:100;opacity:0;pointer-events:none;transition:all .25s;
+  box-shadow:0 14px 36px -16px rgba(0,0,0,.8);max-width:calc(100% - 40px);
+}
+.toast.show{opacity:1;transform:translate(-50%,0)}
+
+/* ---------- demo banner ---------- */
+.demo-bar{
+  background:var(--brass);color:#1A120C;text-align:center;
+  padding:9px 16px;font-family:var(--ticket);font-size:11.5px;letter-spacing:.16em;text-transform:uppercase;
+}
+
+@media (max-width:860px){
+  .gift-grid{grid-template-columns:1fr}
+  .resv{grid-template-columns:1fr 1fr}
+}
+@media (max-width:560px){
+  .resv{grid-template-columns:1fr}
+  .util-note{display:none}
+  .laurels{gap:16px}
+}
+@media (prefers-reduced-motion:reduce){
+  *{transition:none!important;animation:none!important}
+  html{scroll-behavior:auto}
+}
+</style>
+</head>
+<body>
+
+<div class="demo-bar">Concept demo · Ohad Technologies · not a live store</div>
+
+<div class="util">
+  <div class="wrap util-in">
+    <a href="#top" class="mark">TEXAS <span>·</span> BEEF <span>•</span> FISH <span>•</span> FOWL</a>
+    <span class="util-note">Richardson, TX · Dinner Mon–Sat from 4pm</span>
+    <button class="cart-btn" id="openCart" aria-label="Open your check">
+      Your check <span class="pill" id="count">0</span>
+    </button>
+  </div>
+</div>
+
+<header class="hero" id="top">
+  <div class="wrap hero-in">
+    <p class="eyebrow">Independent &amp; family-run · Richardson, Texas</p>
+    <h1>Come take a bite out of <em>Texas</em></h1>
+    <div class="rule"></div>
+    <p class="lede">Prime beef, fresh fish and honest hospitality since the Wamstad family opened the doors. Now you can book a table, order a steak to go, or send a gift card without picking up the phone.</p>
+
+    <div class="hero-cta">
+      <a class="btn" href="#order">Order to go</a>
+      <a class="btn ghost" href="#gift">Send a gift card</a>
+    </div>
+
+    <div class="resv">
+      <div class="field">
+        <label for="d">Date</label>
+        <input type="date" id="d" value="2026-09-05">
+      </div>
+      <div class="field">
+        <label for="t">Time</label>
+        <select id="t">
+          <option>5:00 pm</option><option>6:00 pm</option>
+          <option selected>7:00 pm</option><option>8:00 pm</option><option>9:00 pm</option>
+        </select>
+      </div>
+      <div class="field">
+        <label for="p">Party size</label>
+        <select id="p">
+          <option>2 guests</option><option>4 guests</option>
+          <option selected>8 guests</option><option>12 guests</option><option>20 guests</option>
+        </select>
+      </div>
+      <div class="field">
+        <button class="btn" id="resvBtn">Check availability</button>
+      </div>
+      <p class="resv-note"><b>Any party size books online</b> — including the ones that have to call today.</p>
+    </div>
+
+    <div class="laurels">
+      <span><b>Diner's Choice</b> · Best for Steak, DFW</span>
+      <span><b>Diner's Choice</b> · Ambience, Dallas Suburbs</span>
+      <span>3609 Shire Blvd · <b>(972) 664-9975</b></span>
+    </div>
+  </div>
+</header>
+
+<section class="band order" id="order">
+  <div class="wrap">
+    <div class="sec-head">
+      <div>
+        <p class="eyebrow">Order online</p>
+        <h2>Cut, priced, and ready to go</h2>
+      </div>
+      <p class="lede">Every item is its own product — searchable on Google, readable on a phone, and priced from one place instead of a menu image that has to be redesigned each time the beef market moves.</p>
+    </div>
+
+    <div class="tabs" role="tablist">
+      <button class="tab" role="tab" aria-selected="true" data-cat="all">Everything</button>
+      <button class="tab" role="tab" aria-selected="false" data-cat="beef">Beef</button>
+      <button class="tab" role="tab" aria-selected="false" data-cat="fish">Fish &amp; Fowl</button>
+      <button class="tab" role="tab" aria-selected="false" data-cat="side">Sides</button>
+      <button class="tab" role="tab" aria-selected="false" data-cat="wine">Wine to go</button>
+    </div>
+
+    <div class="grid" id="menu"></div>
+  </div>
+</section>
+
+<section class="band gift" id="gift">
+  <div class="wrap gift-grid">
+    <div>
+      <p class="eyebrow">Gift cards</p>
+      <h2>Delivered by email in under a minute</h2>
+      <p class="lede" style="margin-top:18px">Today a gift certificate means a drive to Richardson during opening hours. This version sends it the moment someone buys it — which is the difference between a December sale and a missed one.</p>
+      <ul class="checks">
+        <li><svg width="15" height="15" viewBox="0 0 16 16" fill="none"><path d="M2 8.5l4 4 8-9" stroke="#C79A45" stroke-width="1.6"/></svg> Any amount, sent instantly or scheduled for a birthday</li>
+        <li><svg width="15" height="15" viewBox="0 0 16 16" fill="none"><path d="M2 8.5l4 4 8-9" stroke="#C79A45" stroke-width="1.6"/></svg> Redeemed at the table by scanning the code — balance tracked automatically</li>
+        <li><svg width="15" height="15" viewBox="0 0 16 16" fill="none"><path d="M2 8.5l4 4 8-9" stroke="#C79A45" stroke-width="1.6"/></svg> Outstanding balances visible in the same admin as your nightly sales</li>
+      </ul>
+    </div>
+
+    <div class="gc-card">
+      <div class="gc-face">
+        <div class="mk">TEXAS <span>•</span></div>
+        <div class="gc-amt" id="gcAmt">$100</div>
+        <small>Beef · Fish · Fowl — Richardson</small>
+      </div>
+      <div class="amounts">
+        <button class="amt" aria-pressed="false" data-v="25">$25</button>
+        <button class="amt" aria-pressed="false" data-v="50">$50</button>
+        <button class="amt" aria-pressed="true" data-v="100">$100</button>
+        <button class="amt" aria-pressed="false" data-v="250">$250</button>
+      </div>
+      <div class="gc-form">
+        <input type="text" id="gcTo" placeholder="Recipient's name">
+        <input type="email" id="gcEmail" placeholder="Recipient's email">
+        <button class="btn" id="gcAdd">Add gift card to check</button>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="band pd">
+  <div class="wrap">
+    <div class="sec-head">
+      <div>
+        <p class="eyebrow">Private dining &amp; events</p>
+        <h2>Hold the room, not the phone line</h2>
+      </div>
+      <p class="lede">Guests reserve a room and pay the deposit online. The booking, the deposit and the pre-order all land in the same place your dinner service does.</p>
+    </div>
+    <div class="rooms">
+      <div class="room">
+        <span class="seats">Seats up to 14</span>
+        <h3>The Cellar Table</h3>
+        <p>Private table beside the wine wall. Best for anniversaries and small celebrations.</p>
+        <button class="add" data-name="Cellar Table deposit" data-price="200">Reserve · $200 deposit</button>
+      </div>
+      <div class="room">
+        <span class="seats">Seats up to 40</span>
+        <h3>The Shire Room</h3>
+        <p>Full private room with its own bar. Set menus available for the whole party.</p>
+        <button class="add" data-name="Shire Room deposit" data-price="500">Reserve · $500 deposit</button>
+      </div>
+      <div class="room">
+        <span class="seats">Any size</span>
+        <h3>Buyout &amp; catering</h3>
+        <p>Holiday parties, rehearsal dinners and off-site catering, quoted from your own menu.</p>
+        <button class="add" data-name="Event consultation hold" data-price="100">Hold a date · $100</button>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="band admin">
+  <div class="wrap">
+    <p class="eyebrow">Behind the counter</p>
+    <h2>One admin runs all of it</h2>
+    <p class="lede" style="margin-top:16px">The storefront above and the POS on the floor read from the same catalog. Change a price once and it moves everywhere — register, website, online menu, gift cards.</p>
+    <div class="admin-grid">
+      <div class="cellbox">
+        <span class="n">Catalog</span>
+        <h3>Price it once</h3>
+        <p>Update the ribeye or 86 the redfish, and the floor and the website agree instantly. No second menu to maintain.</p>
+      </div>
+      <div class="cellbox">
+        <span class="n">POS</span>
+        <h3>Built for the floor</h3>
+        <p>Table and tab management, course firing, split checks, and barcode scanning for bottle sales at the bar.</p>
+      </div>
+      <div class="cellbox">
+        <span class="n">Reporting</span>
+        <h3>One nightly number</h3>
+        <p>Dine-in, to-go, wine and gift cards in a single report instead of reconciling three systems after close.</p>
+      </div>
+      <div class="cellbox">
+        <span class="n">Guests</span>
+        <h3>Who came back</h3>
+        <p>Reservations, orders and gift card balances tied to one guest record, ready for your email list.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    <div class="f-grid">
+      <div>
+        <h4>Visit</h4>
+        <p>3609 Shire Boulevard<br>Richardson, TX 75082</p>
+        <p style="margin-top:10px">Just east of Hwy 75 on the George Bush Turnpike</p>
+      </div>
+      <div>
+        <h4>Hours</h4>
+        <p>Monday – Saturday from 4pm</p>
+        <p>Closed Sundays</p>
+      </div>
+      <div>
+        <h4>Reach us</h4>
+        <a href="tel:+19726649975">(972) 664-9975</a>
+        <a href="mailto:info@thesonoftexas.com">info@thesonoftexas.com</a>
+      </div>
+      <div>
+        <h4>Order</h4>
+        <a href="#order">Steaks to go</a>
+        <a href="#gift">Gift cards</a>
+        <a href="#order">Wine to go</a>
+      </div>
+    </div>
+    <div class="f-bot">
+      <span>Concept demo for TEXAS: Beef • Fish • Fowl. Menu items and prices are illustrative.</span>
+      <span>Built by Ohad Technologies · raheelshan.com</span>
+    </div>
+  </div>
+</footer>
+
+<div class="scrim" id="scrim"></div>
+<aside class="drawer" id="drawer" aria-label="Your check">
+  <div class="d-head">
+    <h3>Your check</h3>
+    <button class="close" id="closeCart" aria-label="Close">×</button>
+  </div>
+  <div class="d-body">
+    <div class="check">
+      <div class="check-head">
+        <div class="mk">TEXAS •</div>
+        <div class="meta">Order #4417 · To go · Tonight</div>
+      </div>
+      <div id="lines"></div>
+      <div class="totals" id="totals" hidden>
+        <div class="line"><span class="nm">Subtotal</span><span class="dots"></span><span class="amt-v" id="sub">$0.00</span></div>
+        <div class="line"><span class="nm">Tax (8.25%)</span><span class="dots"></span><span class="amt-v" id="tax">$0.00</span></div>
+        <div class="line grand"><span class="nm">Total</span><span class="dots"></span><span class="amt-v" id="grand">$0.00</span></div>
+      </div>
+    </div>
+  </div>
+  <div class="d-foot">
+    <button class="btn" id="checkout">Continue to payment</button>
+    <small>Demo only — no payment is taken.</small>
+  </div>
+</aside>
+
+<div class="toast" id="toast"></div>
+
+<script>
+const ITEMS = [
+  {c:'beef', n:'Bone-In Ribeye', s:'22 oz · 28-day dry aged', p:78, d:'Our signature cut, seared over mesquite and finished with cracked pepper butter.'},
+  {c:'beef', n:'Center-Cut Filet', s:'8 oz · Prime', p:62, d:'The tender one. Served with a bordelaise made from the day\'s trimmings.'},
+  {c:'beef', n:'New York Strip', s:'14 oz · Prime', p:66, d:'Full-flavored and evenly marbled, the cut the kitchen argues in favor of.'},
+  {c:'beef', n:'Prime Rib', s:'16 oz · Fri & Sat only', p:59, d:'Slow roasted all afternoon, carved to order with horseradish cream and jus.'},
+  {c:'fish', n:'Gulf Redfish', s:'Pan seared', p:46, d:'Brought up from the coast, finished in brown butter with lemon and capers.'},
+  {c:'fish', n:'Cold Water Salmon', s:'Cedar planked', p:42, d:'Roasted on cedar with a whiskey glaze and charred scallion.'},
+  {c:'fish', n:'Roast Half Chicken', s:'Free range', p:34, d:'Brined overnight, roasted crisp, served over pan drippings and herbs.'},
+  {c:'fish', n:'Jumbo Shrimp Cocktail', s:'Six pieces', p:24, d:'Chilled Gulf shrimp with our own horseradish cocktail sauce.'},
+  {c:'side', n:'Skillet Creamed Corn', s:'Serves two', p:14, d:'Sweet corn, cream and a little heat, finished under the broiler.'},
+  {c:'side', n:'Twice-Baked Potato', s:'Each', p:12, d:'Sharp cheddar, scallion and bacon, baked until the top cracks.'},
+  {c:'side', n:'Wedge Salad', s:'Each', p:13, d:'Iceberg, blue cheese, tomato and thick-cut bacon. No apologies.'},
+  {c:'wine', n:'Texas Hill Country Tempranillo', s:'750ml · to go', p:48, d:'A house favorite that travels well. Bottle prices apply for pickup orders.'},
+  {c:'wine', n:'Napa Cabernet Sauvignon', s:'750ml · to go', p:96, d:'Built for the ribeye. Pulled from the cellar and packed for the drive home.'},
+  {c:'wine', n:'Sonoma Chardonnay', s:'750ml · to go', p:52, d:'Barrel fermented, rounder than most, good with the redfish.'}
+];
+
+const money = v => '$' + v.toFixed(2);
+const menuEl = document.getElementById('menu');
+
+function renderMenu(cat){
+  menuEl.innerHTML = ITEMS.filter(i => cat === 'all' || i.c === cat).map(i => `
+    <article class="ticket">
+      <div class="ticket-top">
+        <span class="cut">${i.n}</span>
+        <span class="price">$${i.p}</span>
+      </div>
+      <span class="spec">${i.s}</span>
+      <p class="desc">${i.d}</p>
+      <button class="add" data-name="${i.n}" data-price="${i.p}">Add to check</button>
+    </article>`).join('');
+}
+renderMenu('all');
+
+document.querySelectorAll('.tab').forEach(t => {
+  t.addEventListener('click', () => {
+    document.querySelectorAll('.tab').forEach(x => x.setAttribute('aria-selected','false'));
+    t.setAttribute('aria-selected','true');
+    renderMenu(t.dataset.cat);
+  });
+});
+
+let cart = [];
+
+function add(name, price, btn){
+  const found = cart.find(l => l.name === name);
+  found ? found.qty++ : cart.push({name, price, qty:1});
+  paint();
+  toast(name + ' added to your check');
+  if (btn){
+    const old = btn.textContent;
+    btn.textContent = 'Added ✓';
+    btn.classList.add('done');
+    setTimeout(() => { btn.textContent = old; btn.classList.remove('done'); }, 1400);
+  }
+}
+
+document.addEventListener('click', e => {
+  const b = e.target.closest('.add');
+  if (b) add(b.dataset.name, parseFloat(b.dataset.price), b);
+  const r = e.target.closest('.rm');
+  if (r){ cart.splice(parseInt(r.dataset.i), 1); paint(); }
+});
+
+function paint(){
+  const lines = document.getElementById('lines');
+  const totals = document.getElementById('totals');
+  const qty = cart.reduce((a,l) => a + l.qty, 0);
+  document.getElementById('count').textContent = qty;
+
+  if (!cart.length){
+    lines.innerHTML = '<div class="empty"><strong>Nothing on the check yet</strong>Add a steak, a bottle or a gift card and it will show up here.</div>';
+    totals.hidden = true;
+    return;
+  }
+  lines.innerHTML = cart.map((l,i) => `
+    <div class="line">
+      <button class="rm" data-i="${i}" aria-label="Remove ${l.name}">×</button>
+      <span class="nm">${l.qty} &nbsp;${l.name}</span>
+      <span class="dots"></span>
+      <span class="amt-v">${money(l.price * l.qty)}</span>
+    </div>`).join('');
+  const sub = cart.reduce((a,l) => a + l.price * l.qty, 0);
+  document.getElementById('sub').textContent = money(sub);
+  document.getElementById('tax').textContent = money(sub * 0.0825);
+  document.getElementById('grand').textContent = money(sub * 1.0825);
+  totals.hidden = false;
+}
+paint();
+
+// gift card
+let gcValue = 100;
+document.querySelectorAll('.amt').forEach(a => {
+  a.addEventListener('click', () => {
+    document.querySelectorAll('.amt').forEach(x => x.setAttribute('aria-pressed','false'));
+    a.setAttribute('aria-pressed','true');
+    gcValue = parseInt(a.dataset.v);
+    document.getElementById('gcAmt').textContent = '$' + gcValue;
+  });
+});
+document.getElementById('gcAdd').addEventListener('click', () => {
+  const to = document.getElementById('gcTo').value.trim();
+  add('Gift card' + (to ? ' for ' + to : '') + ' · $' + gcValue, gcValue);
+  openCart();
+});
+
+// drawer
+const drawer = document.getElementById('drawer');
+const scrim = document.getElementById('scrim');
+function openCart(){ drawer.classList.add('open'); scrim.classList.add('open'); }
+function shutCart(){ drawer.classList.remove('open'); scrim.classList.remove('open'); }
+document.getElementById('openCart').addEventListener('click', openCart);
+document.getElementById('closeCart').addEventListener('click', shutCart);
+scrim.addEventListener('click', shutCart);
+document.addEventListener('keydown', e => { if (e.key === 'Escape') shutCart(); });
+
+document.getElementById('checkout').addEventListener('click', () => {
+  toast(cart.length ? 'This is where card payment would run.' : 'Add something to the check first.');
+});
+document.getElementById('resvBtn').addEventListener('click', () => {
+  const p = document.getElementById('p').value;
+  toast('Table for ' + p + ' held for 10 minutes.');
+});
+
+let tId;
+function toast(msg){
+  const t = document.getElementById('toast');
+  t.textContent = msg;
+  t.classList.add('show');
+  clearTimeout(tId);
+  tId = setTimeout(() => t.classList.remove('show'), 2600);
+}
+</script>
+</body>
+</html>
